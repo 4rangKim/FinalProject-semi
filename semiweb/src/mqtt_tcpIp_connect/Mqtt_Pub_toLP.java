@@ -1,4 +1,4 @@
-package main;
+package mqtt_tcpIp_connect;
 
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttException;

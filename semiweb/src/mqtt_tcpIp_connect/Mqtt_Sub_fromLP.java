@@ -1,4 +1,4 @@
-package main;
+package mqtt_tcpIp_connect;
 
 import java.io.IOException;
 import java.net.InetAddress;
@@ -46,9 +46,9 @@ public class Mqtt_Sub_fromLP implements MqttCallback{
 	}
 	@Override
 	public void messageArrived(String topic, MqttMessage message) throws Exception {
-		System.out.println("==============Mqttë©”ì„¸ì§€ ìˆ˜ì‹ ===============");
-		System.out.println("í† í”½: "+topic);
-		System.out.println("ë©”ì„¸ì§€: "+message);
+		System.out.println("==============Mqttë©”ì„¸ì§? ?ˆ˜?‹ ===============");
+		System.out.println("?† ?”½: "+topic);
+		System.out.println("ë©”ì„¸ì§?: "+message);
 		System.out.println("id: "+message.getId());
 		
 		sender = new AndroidSender(tcpServer.getClient(), new String(message.getPayload()));
@@ -72,13 +72,13 @@ public class Mqtt_Sub_fromLP implements MqttCallback{
 		public void run() {
 			try {
 				server = new ServerSocket(12345);
-				System.out.println("ì„œë²„ ì‹œì‘!!");
+				System.out.println("?„œë²? ?‹œ?‘!!");
 				
 				while(true) {
 					client = server.accept();
 					if(client != null) {
 						clientIp = client.getInetAddress();
-						System.out.println("ì ‘ì†í•œ í´ë¼ì´ì–¸íŠ¸ ip: "+clientIp.getHostAddress());
+						System.out.println("? ‘?†?•œ ?´?¼?´?–¸?Š¸ ip: "+clientIp.getHostAddress());
 						new ReceivefromAndroidThread(client, mqttClient).start();
 					}
 					

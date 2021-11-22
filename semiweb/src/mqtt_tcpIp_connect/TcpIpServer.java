@@ -1,4 +1,4 @@
-package main;
+package mqtt_tcpIp_connect;
 
 import java.io.IOException;
 import java.net.InetAddress;
@@ -15,13 +15,13 @@ public class TcpIpServer extends Thread{
 	public void run() {
 		try {
 			server = new ServerSocket(12345);
-			System.out.println("ì„œë²„ ì‹œì‘!!");
+			System.out.println("?„œë²? ?‹œ?‘!!");
 			
 			while(true) {
 				client = server.accept();
 				if(client != null) {
 					clientIp = client.getInetAddress();
-					System.out.println("ì ‘ì†í•œ í´ë¼ì´ì–¸íŠ¸ ip: "+clientIp.getHostAddress());
+					System.out.println("? ‘?†?•œ ?´?¼?´?–¸?Š¸ ip: "+clientIp.getHostAddress());
 					
 				}
 				

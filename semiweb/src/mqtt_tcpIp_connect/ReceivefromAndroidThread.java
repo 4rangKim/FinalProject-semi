@@ -1,4 +1,4 @@
-package main;
+package mqtt_tcpIp_connect;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -33,10 +33,10 @@ public class ReceivefromAndroidThread extends Thread{
 				else {
 					resMsg = in.readLine();
 					if(resMsg == null) {
-						System.out.println("ìˆ˜ì‹ ëœ ë©”ì„¸ì§€ ì—†ìŒ");
+						System.out.println("?ˆ˜?‹ ?œ ë©”ì„¸ì§? ?—†?Œ");
 					}else {
-						System.out.println("==========ì•ˆë“œë¡œì´ë“œë¡œë¶€í„° ìˆ˜ì‹ ëœ ë©”ì„¸ì§€===========");
-						System.out.println("ë©”ì„¸ì§€: "+resMsg);
+						System.out.println("==========?•ˆ?“œë¡œì´?“œë¡œë??„° ?ˆ˜?‹ ?œ ë©”ì„¸ì§?===========");
+						System.out.println("ë©”ì„¸ì§?: "+resMsg);
 						publish = new Mqtt_Pub_toLP(mqttClient, "toLP", resMsg);
 						publish.send();
 					}
