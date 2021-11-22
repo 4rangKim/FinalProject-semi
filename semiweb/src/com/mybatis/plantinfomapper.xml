@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.PlantInfoMapper">
+	
+	<insert id="insert" parameterType="plantinfo">
+		INSERT INTO plant VALUES (PI_SEQ.NEXTVAL,1,#{tem},#{humi},#{lux},SYSDATE)	
+	</insert>
+	
+	<update id="update" parameterType="plantinfo">
+		UPDATE plant SET tem=#{tem}, humi=#{humi}, lux=#{lux} WHERE infoNum=#{infoNum}
+	</update>
+	
+	<delete id="delete" parameterType="String">
+		DELETE FROM plant WHERE infoNum=#{infoNum}
+	</delete>
+	
+	<select id="select" parameterType="String" 
+	resultType="plant">
+		SELECT * FROM plant WHERE infoNum=#{infoNum}	
+	</select>
+	
+	<select id="selectall" resultType="plantinfo">
+		SELECT * FROM plant where id=#{id}
+	</select>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

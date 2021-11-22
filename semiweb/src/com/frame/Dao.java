@@ -8,5 +8,4 @@ public interface Dao<K,V> {
 	public void update(V v) throws Exception;
 	public V select(K k) throws Exception;
 	public ArrayList<V> select() throws Exception;
-
 }

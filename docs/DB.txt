@@ -1,0 +1,32 @@
+
+CREATE SEQUENCE P_SEQ
+INCREMENT BY 1
+START WITH 100;
+
+CREATE SEQUENCE PI_SEQ
+INCREMENT BY 1
+START WITH 100;
+
+CREATE TABLE Plant(
+id INT PRIMARY KEY,
+name VARCHAR2(20),
+join_date DATE
+);
+
+CREATE TABLE Plant_Info(
+infoNum int,
+id INT,
+tem NUMBER,
+lux NUMBER,
+humi NUMBER,
+time DATE,
+CONSTRAINT FK_Plant_Info FOREIGN KEY(id)
+REFERENCES Plant(id)
+);
+
+ex)
+INSERT INTO Plant VALUES (P_SEQ.NEXTVAL,'쑥쑥이',SYSDATE);
+INSERT INTO Plant_Info VALUES (PI_SEQ.NEXTVAL,id,30,280,60,SYSDATE);
+
+시간까지 조회할 때,
+select to_char(time, 'YYYY-MM-DD HH24:MI:SS') from Plant_Info;

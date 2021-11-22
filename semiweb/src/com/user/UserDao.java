@@ -38,5 +38,4 @@ public class UserDao implements Dao<String, UserVO> {
 	public ArrayList<UserVO> select() throws Exception {
 		return um.selectall();
 	}
-
 }
