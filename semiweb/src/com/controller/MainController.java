@@ -74,6 +74,7 @@ public class MainController {
 			jo.put("lux", latestinfo.getLux());
 			jo.put("humi", latestinfo.getHumi());
 			ja.add(jo);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
