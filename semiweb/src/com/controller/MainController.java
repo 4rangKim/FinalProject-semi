@@ -44,13 +44,15 @@ public class MainController {
 	@RequestMapping("/plantdetail.mc")
 	public ModelAndView login() {
 		ModelAndView mv = new ModelAndView();
-		try {
-			List<PlantInfoVO> infolist = service.get();
-			mv.addObject("infolist", infolist);
-			System.out.println(infolist);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+//		try {
+//			List<PlantInfoVO> infolist = service.get();
+//			PlantInfoVO latestinfo = infolist.get(0);
+//			//mv.addObject("infolist", infolist);
+//			//mv.addObject("latestinfo", latestinfo);
+//			//System.out.println(latestinfo);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
 		mv.addObject("center", "plantdetail");
 		mv.setViewName("main");
 		return mv;
@@ -60,19 +62,20 @@ public class MainController {
 	public void uu(HttpServletResponse response) throws IOException {
 		response.setContentType("text/json;charset=UTF-8");
 		PrintWriter out = response.getWriter();
-		List<PlantInfoVO> infolist = null;
+		//List<PlantInfoVO> infolist = null;
+		//PlantInfoVO latestinfo = infolist.get(0);
+		JSONArray ja = new JSONArray();
 		try {
-			infolist = service.get();
+			List<PlantInfoVO> infolist = service.get();
+			PlantInfoVO latestinfo = infolist.get(0);
+			
+			JSONObject jo = new JSONObject();
+			jo.put("temp", latestinfo.getTem());
+			jo.put("lux", latestinfo.getLux());
+			jo.put("humi", latestinfo.getHumi());
+			ja.add(jo);
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
-		JSONArray ja = new JSONArray();
-		for(PlantInfoVO u:infolist) {
-			JSONObject jo = new JSONObject();
-			jo.put("temp", u.getTem());
-			jo.put("lux", u.getLux());
-			jo.put("humi", u.getHumi());
-			ja.add(jo);
 		}
 		System.out.println(ja.toJSONString());
 
