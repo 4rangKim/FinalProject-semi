@@ -17,7 +17,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</delete>
 	
 	<select id="select" parameterType="String" 
-	resultType="plant">
+	resultType="plantinfo">
 		SELECT * FROM Plant_Info WHERE infoNum=#{infoNum}	
 	</select>
 	
