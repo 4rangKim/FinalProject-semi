@@ -23,6 +23,10 @@ import com.vo.UserVO;
 @Controller
 public class MainController {
 
+	private Logger data_log = 
+			Logger.getLogger("data"); 
+	
+	
 	@RequestMapping("/main.mc")
 	public ModelAndView main() {
 		ModelAndView mv = new ModelAndView();
@@ -30,6 +34,22 @@ public class MainController {
 		return mv;
 	}
 	
+	@RequestMapping("/plantdetail.mc")
+	public ModelAndView login() {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("center", "plantdetail");
+		mv.setViewName("main");
+		return mv;
+	}
+	@RequestMapping("/humi.mc")
+	@ResponseBody
+	public void iotdata(HttpServletRequest request) throws IOException {
+		String humi = request.getParameter("humi");
+		double f_humi = Double.parseDouble(humi);
+		System.out.println("습도 : "+f_humi);
+		data_log.debug("습도 : "+f_humi);
+		
+	}
 }
 
 
