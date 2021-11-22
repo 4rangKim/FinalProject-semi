@@ -53,11 +53,28 @@
 				color: #010101;
 			}
 		</style>
+		<script>
+			function getData(){
+				$.ajax({
+					url:'plantajax.mc',
+					success:function(data){
+						$(data).each(function(idx,item){
+							console.log('--------------'+item.humi);
+							$('#temp').html(item.temp+"&nbsp;&nbsp;&nbsp;&nbsp;℃");
+							$('#lux').html(item.lux+"&nbsp;&nbsp;&nbsp;&nbsp;lux");
+							$('#humi').html(item.humi+"&nbsp;&nbsp;&nbsp;&nbsp;%");
+						});
+					}
+				});
+			};
+			$(document).ready(function(){
+			    setInterval(function() {
+			    	getData();
+			       }, 2000);
+			});
+		</script>
 	</head>
 	<body>
-	<% ArrayList<PlantInfoVO> infolist = (ArrayList<PlantInfoVO>)request.getAttribute("infolist");
-		PlantInfoVO plantInfo = infolist.get(0);
-	%>
 		<div class="box">
 		<div class="container">
 			<div>
@@ -72,15 +89,15 @@
 					<table>
 						<tr>
 							<td id="head">온도<img class="icon" alt="" src="img/temp.png"></td>
-							<td class="temp property">℃</td>
+							<td id="temp" class="temp property"></td>
 						</tr>
 						<tr>
 							<td id="head" >습도<img class="icon" alt="" src="img/humi.png"></td>
-							<td class="humi property"><%=plantInfo.getHumi()%>&nbsp;&nbsp;&nbsp;&nbsp;%</td>
+							<td id="humi" class="humi property"></td>
 						</tr>
 						<tr>
 							<td id="head" >조도<img class="icon" alt="" src="img/light.png"></td>
-							<td class="light property">lux</td>
+							<td id="lux" class="light property"></td>
 						</tr>
 					</table>
 				</div>

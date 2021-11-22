@@ -55,7 +55,31 @@ public class MainController {
 		mv.setViewName("main");
 		return mv;
 	}
-	
+	@RequestMapping("/plantajax.mc")
+	@ResponseBody
+	public void uu(HttpServletResponse response) throws IOException {
+		response.setContentType("text/json;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		List<PlantInfoVO> infolist = null;
+		try {
+			infolist = service.get();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		JSONArray ja = new JSONArray();
+		for(PlantInfoVO u:infolist) {
+			JSONObject jo = new JSONObject();
+			jo.put("temp", u.getTem());
+			jo.put("lux", u.getLux());
+			jo.put("humi", u.getHumi());
+			ja.add(jo);
+		}
+		System.out.println(ja.toJSONString());
+
+		out.print(ja.toJSONString());
+
+		out.close();
+	}
 	@RequestMapping("/humi.mc")
 	@ResponseBody
 	public void iotdata(HttpServletRequest request) throws IOException {
