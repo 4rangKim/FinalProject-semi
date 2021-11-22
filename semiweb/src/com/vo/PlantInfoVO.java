@@ -10,9 +10,16 @@ public class PlantInfoVO {
 	public double lux;
 	public Date time;
 	
-	// 기본 생성자
+	// 
 	public PlantInfoVO() {
 	}
+	
+	
+	public PlantInfoVO(double humi) {
+		super();
+		this.humi = humi;
+	}
+
 
 	// insert
 	public PlantInfoVO(double tem, double humi, double lux) {

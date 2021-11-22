@@ -11,7 +11,7 @@ import com.vo.PlantVO;
 @org.springframework.stereotype.Service("plantservice")
 public class PlantService implements Service<String, PlantVO> {
 
-	@Resource(name="plantdao")
+	@Resource(name="PlantDao")
 	Dao<String,PlantVO> dao;
 	
 	@Override

@@ -5,10 +5,14 @@ PUBLIC "-//mybatis.org/DTD Config 3.0//EN"
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.vo.UserVO" alias="user"/>
+		<typeAlias type="com.vo.PlantVO" alias="plant"/>
+		<typeAlias type="com.vo.PlantInfoVO" alias="plantinfo"/>
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="com/mybatis/usermapper.xml"/>
+		<mapper resource="com/mybatis/plantmapper.xml"/>
+		<mapper resource="com/mybatis/plantinfomapper.xml"/>
 	</mappers>
 </configuration>
 

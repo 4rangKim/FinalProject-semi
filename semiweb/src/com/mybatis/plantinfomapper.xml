@@ -5,24 +5,24 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 <mapper namespace="com.mapper.PlantInfoMapper">
 	
 	<insert id="insert" parameterType="plantinfo">
-		INSERT INTO plant VALUES (PI_SEQ.NEXTVAL,1,#{tem},#{humi},#{lux},SYSDATE)	
+		INSERT INTO Plant_Info VALUES (PI_SEQ.NEXTVAL,100,30,30,#{humi},SYSDATE)	
 	</insert>
 	
 	<update id="update" parameterType="plantinfo">
-		UPDATE plant SET tem=#{tem}, humi=#{humi}, lux=#{lux} WHERE infoNum=#{infoNum}
+		UPDATE Plant_Info SET tem=#{tem}, humi=#{humi}, lux=#{lux} WHERE infoNum=#{infoNum}
 	</update>
 	
 	<delete id="delete" parameterType="String">
-		DELETE FROM plant WHERE infoNum=#{infoNum}
+		DELETE FROM Plant_Info WHERE infoNum=#{infoNum}
 	</delete>
 	
 	<select id="select" parameterType="String" 
 	resultType="plant">
-		SELECT * FROM plant WHERE infoNum=#{infoNum}	
+		SELECT * FROM Plant_Info WHERE infoNum=#{infoNum}	
 	</select>
 	
 	<select id="selectall" resultType="plantinfo">
-		SELECT * FROM plant where id=#{id}
+		SELECT * FROM Plant_Info where id=100 order by infoNum desc
 	</select>
 	
 </mapper>

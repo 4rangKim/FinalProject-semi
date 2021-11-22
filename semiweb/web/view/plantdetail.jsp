@@ -1,3 +1,5 @@
+<%@page import="com.vo.PlantInfoVO"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
@@ -37,6 +39,7 @@
 				color: #888b81;
 			}
 			table{
+				width: 400px;
 				height: 300px;
 			}
 			.icon{
@@ -52,6 +55,9 @@
 		</style>
 	</head>
 	<body>
+	<% ArrayList<PlantInfoVO> infolist = (ArrayList<PlantInfoVO>)request.getAttribute("infolist");
+		PlantInfoVO plantInfo = infolist.get(0);
+	%>
 		<div class="box">
 		<div class="container">
 			<div>
@@ -65,16 +71,16 @@
 				<div class="col-sm-7">
 					<table>
 						<tr>
-							<td id="head" class="col-sm-3">온도<img class="icon" alt="" src="img/temp.png"></td>
-							<td class="col-sm-4 temp property">℃</td>
+							<td id="head">온도<img class="icon" alt="" src="img/temp.png"></td>
+							<td class="temp property">℃</td>
 						</tr>
 						<tr>
-							<td id="head" class="col-sm-3">습도<img class="icon" alt="" src="img/humi.png"></td>
-							<td class="col-sm-4 humi property">%</td>
+							<td id="head" >습도<img class="icon" alt="" src="img/humi.png"></td>
+							<td class="humi property"><%=plantInfo.getHumi()%>&nbsp;&nbsp;&nbsp;&nbsp;%</td>
 						</tr>
 						<tr>
-							<td id="head" class="col-sm-3">조도<img class="icon" alt="" src="img/light.png"></td>
-							<td class="col-sm-4 light property">lux</td>
+							<td id="head" >조도<img class="icon" alt="" src="img/light.png"></td>
+							<td class="light property">lux</td>
 						</tr>
 					</table>
 				</div>
