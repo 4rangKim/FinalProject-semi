@@ -70,7 +70,7 @@
 			$(document).ready(function(){
 			    setInterval(function() {
 			    	getData();
-			       }, 2000);
+			       }, 10000);
 			});
 		</script>
 	</head>

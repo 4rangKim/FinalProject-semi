@@ -46,7 +46,7 @@ public class Mqtt_Sub_fromLP implements MqttCallback{
 	}
 	@Override
 	public void messageArrived(String topic, MqttMessage message) throws Exception {
-		System.out.println("==============Mqttë©”ì„¸ì§? ?ˆ˜?‹ ===============");
+		System.out.println("==============Mqtt_Message_Sent===============");
 		System.out.println("?† ?”½: "+topic);
 		System.out.println("ë©”ì„¸ì§?: "+message);
 		System.out.println("id: "+message.getId());
@@ -72,7 +72,7 @@ public class Mqtt_Sub_fromLP implements MqttCallback{
 		public void run() {
 			try {
 				server = new ServerSocket(12345);
-				System.out.println("?„œë²? ?‹œ?ž‘!!");
+				System.out.println("¼­¹ö½ÃÀÛ!!");
 				
 				while(true) {
 					client = server.accept();
