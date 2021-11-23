@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 <mapper namespace="com.mapper.PlantInfoMapper">
 	
 	<insert id="insert" parameterType="plantinfo">
-		INSERT INTO Plant_Info VALUES (PI_SEQ.NEXTVAL,100,30,30,#{humi},SYSDATE)	
+		INSERT INTO Plant_Info VALUES (PI_SEQ.NEXTVAL,100,#{tem},#{lux},#{humi},SYSDATE)	
 	</insert>
 	
 	<update id="update" parameterType="plantinfo">

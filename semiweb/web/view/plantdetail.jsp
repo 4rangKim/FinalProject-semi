@@ -52,6 +52,20 @@
 				font-weight: bold;
 				color: #010101;
 			}
+			input{
+				background-color: #9abfd1;
+				width: 80px;
+				height: 40px;
+				border-radius: 30px;
+				border: none;
+				color: white;
+				margin: 20px;
+				
+			}
+			.waterbtn{
+				width: 50px;
+				height: 50px;
+			}
 		</style>
 		<script>
 			function getData(){
@@ -59,7 +73,7 @@
 					url:'plantajax.mc',
 					success:function(data){
 						$(data).each(function(idx,item){
-							console.log('--------------'+item.humi);
+							console.log('--------------'+item.humi+'--------------'+item.lux+'--------------'+item.humi);
 							$('#temp').html(item.temp+"&nbsp;&nbsp;&nbsp;&nbsp;¡É");
 							$('#lux').html(item.lux+"&nbsp;&nbsp;&nbsp;&nbsp;lux");
 							$('#humi').html(item.humi+"&nbsp;&nbsp;&nbsp;&nbsp;%");
@@ -100,6 +114,10 @@
 							<td id="lux" class="light property"></td>
 						</tr>
 					</table>
+					<form name="water_btn" onclick="click()" method='GET'>
+						<input type="hidden" name="water" value="on"/>
+						<input class="onBtn" type="submit" value="¹°ÁÖ±â"/>
+					</form>
 				</div>
 				<div class="col-sm-1"></div>
 			</div>

@@ -5,9 +5,9 @@ import java.util.Date;
 public class PlantInfoVO {
 	public int infoNum;
 	public int id;
-	public double tem;
-	public double humi;
-	public double lux;
+	public int tem;
+	public int humi;
+	public int lux;
 	public Date time;
 	
 	// 
@@ -15,21 +15,16 @@ public class PlantInfoVO {
 	}
 	
 	
-	public PlantInfoVO(double humi) {
-		super();
-		this.humi = humi;
-	}
-
 
 	// insert
-	public PlantInfoVO(double tem, double humi, double lux) {
+	public PlantInfoVO(int tem, int humi, int lux) {
 		super();
 		this.tem = tem;
 		this.humi = humi;
 		this.lux = lux;
 	}
 	// update
-	public PlantInfoVO(int infoNum, double tem, double humi, double lux) {
+	public PlantInfoVO(int infoNum, int tem, int humi, int lux) {
 		super();
 		this.infoNum = infoNum;
 		this.tem = tem;
@@ -59,27 +54,27 @@ public class PlantInfoVO {
 		this.id = id;
 	}
 
-	public double getTem() {
+	public int getTem() {
 		return tem;
 	}
 
-	public void setTem(double tem) {
+	public void setTem(int tem) {
 		this.tem = tem;
 	}
 
-	public double getHumi() {
+	public int getHumi() {
 		return humi;
 	}
 
-	public void setHumi(double humi) {
+	public void setHumi(int humi) {
 		this.humi = humi;
 	}
 
-	public double getLux() {
+	public int getLux() {
 		return lux;
 	}
 
-	public void setLux(double lux) {
+	public void setLux(int lux) {
 		this.lux = lux;
 	}
 

@@ -26,10 +26,14 @@ import com.vo.UserVO;
 
 @Controller
 public class MainController {
-
+	MyMqtt_Pub_client client;
 	private Logger data_log = 
-			Logger.getLogger("data"); 
+			Logger.getLogger("data");
 	
+	public MainController() {
+		client = new MyMqtt_Pub_client();
+		
+	}
 	
 	@Resource(name="plantinfoservice")
 	Service<String, PlantInfoVO> service;
@@ -42,28 +46,23 @@ public class MainController {
 	}
 	
 	@RequestMapping("/plantdetail.mc")
-	public ModelAndView login() {
+	public ModelAndView detail(HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
-//		try {
-//			List<PlantInfoVO> infolist = service.get();
-//			PlantInfoVO latestinfo = infolist.get(0);
-//			//mv.addObject("infolist", infolist);
-//			//mv.addObject("latestinfo", latestinfo);
-//			//System.out.println(latestinfo);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
+		String water = request.getParameter("water");
+		System.out.println(water);
+		if(water!=null) {
+			client.send("water", water);			
+		}
 		mv.addObject("center", "plantdetail");
 		mv.setViewName("main");
 		return mv;
 	}
+	
 	@RequestMapping("/plantajax.mc")
 	@ResponseBody
 	public void uu(HttpServletResponse response) throws IOException {
 		response.setContentType("text/json;charset=UTF-8");
 		PrintWriter out = response.getWriter();
-		//List<PlantInfoVO> infolist = null;
-		//PlantInfoVO latestinfo = infolist.get(0);
 		JSONArray ja = new JSONArray();
 		try {
 			List<PlantInfoVO> infolist = service.get();
@@ -75,23 +74,28 @@ public class MainController {
 			jo.put("humi", latestinfo.getHumi());
 			ja.add(jo);
 			
+			FcmUtil.sendServer(latestinfo.getTem(),  latestinfo.getLux(), latestinfo.getHumi());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println(ja.toJSONString());
-
+		//System.out.println(ja.toJSONString());
 		out.print(ja.toJSONString());
-
 		out.close();
+		
 	}
-	@RequestMapping("/humi.mc")
+	
+	@RequestMapping("/plantInfo.mc")
 	@ResponseBody
 	public void iotdata(HttpServletRequest request) throws IOException {
+		String temp = request.getParameter("temp");
 		String humi = request.getParameter("humi");
-		double f_humi = Double.parseDouble(humi);
-		System.out.println("습도 : "+f_humi);
-		data_log.debug("습도 : "+f_humi);
-		PlantInfoVO v = new PlantInfoVO(f_humi);
+		String lux = request.getParameter("lux");
+		int tempVal = Integer.parseInt(temp);
+		int humiVal = Integer.parseInt(humi);
+		int luxVal = Integer.parseInt(lux);
+		System.out.println("온도 : "+tempVal+"습도 : "+humiVal+"조도 : "+luxVal);
+		//data_log.debug("습도 : "+f_humi);
+		PlantInfoVO v = new PlantInfoVO(tempVal, humiVal, luxVal);
 		try {
 			service.register(v);
 		} catch (Exception e) {
