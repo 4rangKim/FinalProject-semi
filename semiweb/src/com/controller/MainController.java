@@ -87,7 +87,7 @@ public class MainController {
 		System.out.println("data:"+data);
 		Random random = new Random();
 		if(data != null && data != "") {
-			double temp = Double.parseDouble(data);			
+			int temp = Integer.parseInt(data);			
 			System.out.println("라떼판다로부터 받은 데이터: "+temp);
 			PlantInfoVO info = new PlantInfoVO(temp, random.nextInt(80), random.nextInt(1000));
 			try {
