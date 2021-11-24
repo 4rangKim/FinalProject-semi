@@ -70,7 +70,7 @@ public class MainController {
 			jo.put("humi", latestinfo.getHumi());
 			ja.add(jo);
 			
-			FcmUtil.sendServer(latestinfo.getTem(),  latestinfo.getLux(), latestinfo.getHumi());
+			FcmUtil.sendServer(latestinfo.getTem(), latestinfo.getHumi(), latestinfo.getLux());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -86,15 +86,15 @@ public class MainController {
 		String data = request.getParameter("temp");
 		System.out.println("data:"+data);
 		Random random = new Random();
-		if(data != null && data != "") {
-			int temp = Integer.parseInt(data);			
-			System.out.println("라떼판다로부터 받은 데이터: "+temp);
-			PlantInfoVO info = new PlantInfoVO(temp, random.nextInt(80), random.nextInt(1000));
+		if(data != null && data != "") {			
 			try {
+				int temp = (int)Double.parseDouble(data);			
+				System.out.println("라떼판다로부터 받은 데이터: "+temp);
+				PlantInfoVO info = new PlantInfoVO(temp, random.nextInt(80), random.nextInt(1000));
 				service.register(info);
 			} catch (Exception e) {
 				e.printStackTrace();
-			}
+			} 
 		}
 	}
 	
