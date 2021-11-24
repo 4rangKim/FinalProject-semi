@@ -52,20 +52,30 @@
 				font-weight: bold;
 				color: #010101;
 			}
-			input{
-				background-color: #9abfd1;
+			button{
 				width: 80px;
-				height: 40px;
-				border-radius: 30px;
+				height: 80px;
 				border: none;
-				color: white;
+				outline: none;
+				border: none;
+				cursor: pointer;
+				background-color: #ffffff;
 				margin: 20px;
-				
 			}
 			.waterbtn{
-				width: 50px;
-				height: 50px;
+				width: 80px;
+				height: 80px;
+				margin: 20px;
 			}
+			.waterbtn:focus{ 	
+ 			   border: none;
+   			   outline:none;
+   			 }
+   			 button:focus{ 	
+ 			   border: none;
+   			   outline:none;
+   			 }
+
 		</style>
 		<script>
 			function getData(){
@@ -116,7 +126,9 @@
 					</table>
 					<form name="water_btn" onclick="click()" method='GET'>
 						<input type="hidden" name="water" value="on"/>
-						<input class="onBtn" type="submit" value="¹°ÁÖ±â"/>
+						<button class="onBtn" type="submit">
+							<img class="waterbtn" alt="" src="img/watering.png">
+						</button>
 					</form>
 				</div>
 				<div class="col-sm-1"></div>
