@@ -44,10 +44,10 @@ public class MainController {
 	@RequestMapping("/plantdetail.mc")
 	public ModelAndView detail(HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
-		String water = request.getParameter("water");
-		System.out.println(water);
-		if(water!=null) {
-			client.send("water", water);			
+		String msg = request.getParameter("water");
+		System.out.println(msg);
+		if(msg!=null) {
+			client.send("water", msg);			
 		}
 		mv.addObject("center", "plantdetail");
 		mv.setViewName("main");
@@ -71,6 +71,7 @@ public class MainController {
 			ja.add(jo);
 			
 			FcmUtil.sendServer(latestinfo.getTem(), latestinfo.getHumi(), latestinfo.getLux());
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
